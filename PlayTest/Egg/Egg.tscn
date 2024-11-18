@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://be7bpnpgjji5d"]
+
+[ext_resource type="Texture2D" uid="uid://cd6qsrqnl7bn3" path="res://PlayTest/Egg/Assets/Egg.png" id="1_gqkek"]
+[ext_resource type="Script" path="res://PlayTest/Egg/Egg.cs" id="1_uwauy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpwb3"]
+radius = 23.3452
+
+[node name="Egg" type="Node2D"]
+script = ExtResource("1_uwauy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(54, 90)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_gqkek")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(55, 91)
+shape = SubResource("CircleShape2D_qpwb3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(55, 96)
+
+[connection signal="mouse_entered" from="CharacterBody2D/Area2D" to="." method="MouseEntered"]
+[connection signal="mouse_exited" from="CharacterBody2D/Area2D" to="." method="MouseExited"]
